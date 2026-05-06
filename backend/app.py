@@ -98,7 +98,9 @@ def seed_admin(app):
             db.session.add(member)
             db.session.commit()
             print("✅ Default users created: admin@teamtask.com / Admin@123")
-
+@app.route("/api/health")
+def health():
+    return {"status": "ok"}, 200
 
 if __name__ == '__main__':
     app = create_app()
