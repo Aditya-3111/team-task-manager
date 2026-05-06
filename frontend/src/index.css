@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #060912;
+    color: #f1f5f9;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-slate-900 border border-white/[0.06] rounded-2xl;
+  }
+  .card-hover {
+    @apply card transition-all duration-200 hover:border-white/[0.12] hover:bg-slate-800/80;
+  }
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-500 text-white font-semibold px-4 py-2 rounded-xl
+           transition-all duration-200 flex items-center gap-2 active:scale-95;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  }
+  .btn-secondary {
+    @apply bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 font-medium px-4 py-2 rounded-xl
+           transition-all duration-200 flex items-center gap-2 border border-white/[0.08]
+           active:scale-95;
+  }
+  .btn-danger {
+    @apply bg-red-500/20 hover:bg-red-500/30 text-red-400 font-medium px-4 py-2 rounded-xl
+           transition-all duration-200 flex items-center gap-2 border border-red-500/20
+           active:scale-95;
+  }
+  .input {
+    @apply w-full bg-white/[0.05] border border-white/[0.1] rounded-xl px-4 py-2.5
+           text-white placeholder-slate-500 text-sm
+           focus:outline-none focus:border-blue-500/60 focus:bg-white/[0.08]
+           transition-all duration-200;
+  }
+  .label {
+    @apply text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5 block;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-xs font-semibold;
+  }
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:text-white
+           hover:bg-white/[0.06] transition-all duration-150 text-sm font-medium cursor-pointer;
+  }
+  .sidebar-link.active {
+    @apply bg-blue-600/20 text-blue-400 border border-blue-500/20;
+  }
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-sm border border-white/[0.08];
+  }
+  .stat-card {
+    @apply card p-5 flex flex-col gap-3 hover:border-white/10 transition-all duration-200;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.08) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar { width: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 4px; }
+}
+
+/* Progress bar animation */
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: var(--progress); }
+}
+.progress-bar { animation: progressFill 0.8s ease-out forwards; }
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Custom scrollbar for the page */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 10px; }
+
+/* Priority colors */
+.priority-low { @apply text-emerald-400 bg-emerald-500/10; }
+.priority-medium { @apply text-amber-400 bg-amber-500/10; }
+.priority-high { @apply text-orange-400 bg-orange-500/10; }
+.priority-critical { @apply text-red-400 bg-red-500/10; }
+
+/* Status colors */
+.status-todo { @apply text-slate-400 bg-slate-500/10; }
+.status-in_progress { @apply text-blue-400 bg-blue-500/10; }
+.status-in_review { @apply text-purple-400 bg-purple-500/10; }
+.status-done { @apply text-emerald-400 bg-emerald-500/10; }
